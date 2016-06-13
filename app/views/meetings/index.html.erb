@@ -31,6 +31,10 @@
         <% week.each do |day| %>
             <td>
               <div><%= day %></div>
+              <% @meetings.select { |m| m.start_time.to_date == day }.sort_by(&:start_time).each do |meeting| %>
+                  <div><%= meeting.name %> <%= meeting.start_time %></div>
+              <% end %>
+
             </td>
         <% end %>
 
